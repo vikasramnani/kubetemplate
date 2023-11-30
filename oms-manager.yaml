@@ -1,0 +1,39 @@
+apiVersion: mongodb.com/v1
+kind: MongoDBOpsManager
+metadata:
+  name: ops-manager
+spec:
+  # Ops Manager HTTP(S) section
+  replicas: 2
+  version: 5.0.0
+  adminCredentials: om-admin-user
+  configuration:
+    #mms.centralUrl: "REQUIRED IF ACCESSED BY EXTERNAL DEPLOYMENTS"
+    mms.ignoreInitialUiSetup: "true"
+    mms.adminEmailAddr: support@mongodb.local
+    mms.fromEmailAddr: support@mongodb.local
+    mms.replyToEmailAddr: support@mongodb.local
+    mms.mail.hostname: mail.mongodb.local
+    mms.mail.port: "465"
+    mms.mail.ssl: "true"
+    mms.mail.transport: smtp
+    mms.minimumTLSVersion: TLSv1.2
+
+  externalConnectivity:
+    type: NodePort
+    port: 30443
+
+  # AppDB section
+  applicationDatabase:
+    members: 3
+    version: "4.4.4-ent"
+    passwordSecretKeyRef:
+      name: om-db-user
+    podSpec:
+      persistence:
+        single:
+          storage: 10Gi
+
+  # Backup section
+  backup:
+    enabled: false
