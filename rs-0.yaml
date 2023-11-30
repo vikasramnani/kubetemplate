@@ -1,0 +1,21 @@
+apiVersion: mongodb.com/v1
+kind: MongoDB
+metadata:
+  name: rs-0
+spec:
+  members: 3
+  version: 4.4.4-ent
+  featureCompatibilityVersion: "4.4"
+  podSpec:
+    persistence:
+      single:
+        storage: 2Gi
+  opsManager:
+    configMapRef:
+      name: rs-0
+  credentials: deploy-credentials
+  type: ReplicaSet
+  security:
+    authentication:
+      enabled: true
+      modes: ["SCRAM"]
