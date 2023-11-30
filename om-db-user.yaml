@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  password: UEtiWXhQc3U4LkBzM1BU
+kind: Secret
+metadata:
+  name: om-db-user
+  namespace: mongodb
+type: Opaque
