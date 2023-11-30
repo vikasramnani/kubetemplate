@@ -2,7 +2,7 @@ apiVersion: v1
 data:
   FirstName: YWRtaW4=
   LastName: YWRtaW4=
-  Password: somepassword
+  Password: Ui1kOCNRUGZASGlYa3FV
   Username: YWRtaW4=
 kind: Secret
 metadata:
