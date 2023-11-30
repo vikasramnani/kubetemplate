@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  baseUrl: https://ops-manager-svc.mongodb.svc.cluster.local:8443 <- Ops Manager URL
+  orgId: 5f2a5372a3b78d007cd060e5 <- Org ID (replace with correct)
+  projectName: Development <- Project to create or already exists
+  sslMMSCAConfigMap: om-https-ca <- configmap reference for CA certificate
+kind: ConfigMap
+metadata:
+  name: rs-0 <- name of configmap
+  namespace: mongodb <- namespace
